@@ -1,0 +1,11 @@
+package com.example.department.repository;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.department.model.Employee;
+
+@Repository
+public interface EmployeeRepository  extends IBaseJpaRepository<Long,Employee>  {
+
+	
+}

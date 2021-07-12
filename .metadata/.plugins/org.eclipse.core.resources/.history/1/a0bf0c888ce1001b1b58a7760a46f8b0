@@ -1,0 +1,11 @@
+package services.department.repository;
+
+import org.springframework.stereotype.Repository;
+
+import services.department.model.Department;
+
+@Repository
+public interface DepartmentRepository extends IBaseJpaRepository<Long,Department>  {
+
+	
+}

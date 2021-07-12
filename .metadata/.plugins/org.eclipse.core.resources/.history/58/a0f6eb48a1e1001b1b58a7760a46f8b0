@@ -1,0 +1,27 @@
+package com.example.easynotes.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class DepartmentController {
+
+//	@Autowired
+//	DepartmentService departmentService;
+//	
+//	@PostMapping("/create")
+//	public Department create(@RequestBody Department department) {
+//		return departmentService.add(department);
+//	}
+//	
+//	@GetMapping("/{id}")
+//	public Department findById(@PathVariable("id") Long id) {
+//		return departmentService.findById(id);
+//	}
+//	
+//	@GetMapping("/findall")
+//	public List<Department> findAll() {
+//		return departmentService.findAll();
+//	}
+//	
+	
+}

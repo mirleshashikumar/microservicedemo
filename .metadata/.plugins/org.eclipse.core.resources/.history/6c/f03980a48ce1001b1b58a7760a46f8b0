@@ -1,0 +1,44 @@
+package com.example.easynotes.controller;
+
+import com.example.easynotes.exception.ResourceNotFoundException;
+import com.example.easynotes.model.Note;
+import com.example.easynotes.repository.NoteRepository;
+
+import services.department.model.Department;
+import services.department.service.DepartmentService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+/**
+ * Created by rajeevkumarsingh on 27/06/17.
+ */
+@RestController
+@RequestMapping("/api")
+public class NoteController {
+	
+	
+	  @Autowired 
+	  public DepartmentService departmentService;
+	 
+
+	@PostMapping("/create")
+	public Department create(@RequestBody Department department) {
+		return departmentService.add(department);
+	}
+	
+	@GetMapping("/{id}")
+	public Department findById(@PathVariable("id") Long id) {
+		return departmentService.findById(id);
+	}
+	
+	@GetMapping("/findall")
+	public List<Department> findAll() {
+		return departmentService.findAll();
+	}
+	
+}

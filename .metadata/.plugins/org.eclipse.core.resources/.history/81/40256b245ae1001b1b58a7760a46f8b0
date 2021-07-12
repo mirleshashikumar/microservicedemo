@@ -1,0 +1,24 @@
+package services.department.model;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+
+import com.unilog.cimmesb.core.model.CoreError;
+
+public class CoreException extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4951959379209936064L;
+
+	public CoreException(String message) {
+		super(message);
+	}
+	
+}

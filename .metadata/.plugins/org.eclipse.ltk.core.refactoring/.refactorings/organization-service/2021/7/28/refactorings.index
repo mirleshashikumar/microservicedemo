@@ -1,0 +1,16 @@
+1625925269600	Copy file
+1625929380691	Rename field 'departmentService'
+1625930423517	Rename package 'services.department.model'
+1625930428846	Rename package 'services.department.repository'
+1625930434514	Rename package 'services.department.service'
+1625930630995	Rename package 'com.example.services.department.repository'
+1625930650406	Rename package 'com.example.repository'
+1625930665128	Rename package 'com.example.services.department.model'
+1625930672878	Rename package 'com.example.services.department.service'
+1625930678139	Rename package 'com.exampledepartment.service'
+1625930864798	Delete element
+1625930871620	Delete element
+1625930881372	Delete element
+1625930892082	Rename package 'com.exampledepartment.model'
+1625930906106	Delete element
+1625937551934	Rename package 'com.example.easynotes.controller'

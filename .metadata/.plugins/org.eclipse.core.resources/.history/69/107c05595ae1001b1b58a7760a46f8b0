@@ -1,0 +1,57 @@
+package services.department.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import services.department.model.Department;
+import services.department.model.Employee;
+import services.department.repository.DepartmentRepository;
+import services.department.repository.EmployeeRepository;
+
+@Service("employeeService")
+public class EmployeeService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeService.class);
+
+	@Autowired
+	EmployeeRepository repository;
+		
+	
+	public Employee add(Employee employee) {
+		LOGGER.info("Employee add: {}", employee);
+		return repository.save(employee);
+	}
+	
+	public Employee findById(Long id) {
+		Employee employee=new Employee();
+		LOGGER.info("Employee find: id={}", id);
+		 Optional<Employee> employeeResponse = repository.findById(id);
+		 if(employeeResponse.isPresent()) {
+			 employee=employeeResponse.get();
+		 }
+		 return employee;
+	}
+	
+	public List<Employee> findAll() {
+		LOGGER.info("Employee Department");
+		return repository.findAll();
+	}
+	
+	public void deleteById(Long id) {
+		Employee employee=new Employee();
+		LOGGER.info("Employee find: id={}", id);
+		 employeeResponse = repository.deleteById(id);
+		 if(employeeResponse.isPresent()) {
+			 employee=employeeResponse.get();
+		 }
+		 return employee;
+	}
+	
+}

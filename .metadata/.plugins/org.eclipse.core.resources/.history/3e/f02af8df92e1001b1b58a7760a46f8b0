@@ -1,0 +1,11 @@
+package com.example.repository;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.services.department.model.Organization;
+
+@Repository
+public interface OrganitzationRepository extends IBaseJpaRepository<Long,Organization> {
+
+	
+}

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: department-service
+datasource:
+    username: staging
+    password: stage123##
+    url: jdbc:mysql://localhost:3306/compony
+
+
+

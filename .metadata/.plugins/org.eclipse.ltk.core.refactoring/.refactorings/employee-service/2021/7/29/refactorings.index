@@ -1,0 +1,26 @@
+1625984238506	Copy compilation unit
+1625984468056	Delete elements
+1625984472134	Delete element
+1625984543527	Delete elements
+1625984555644	Delete elements
+1625984596735	Delete element
+1625988051806	Delete element
+1625988985660	Copy compilation unit
+1625990901659	Rename package 'com.example.department.repository'
+1625990925727	Rename package 'com.example.easynotes'
+1625991005785	Rename type 'EasyNotesApplication'
+1625991320505	Delete element
+1625991326546	Delete element
+1625991791509	Rename package 'services.department.model'
+1625993871217	Copy compilation unit
+1625993899275	Copy compilation unit
+1625995600422	Copy compilation unit
+1625995620645	Copy compilation unit
+1625995720383	Rename type 'departmentResponse'
+1626013062207	Delete element
+1626013066592	Delete element
+1626013079511	Delete element
+1626014007881	Rename resource 'application.properties'
+1626059165697	Rename resource 'properties.yml'
+1626061973993	Rename package 'com.example.department.service'
+1626061987196	Rename package 'com.example.department.controller'

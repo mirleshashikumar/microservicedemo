@@ -1,0 +1,38 @@
+package com.example.easynotes.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import services.department.model.Department;
+import services.department.model.Organization;
+import services.department.repository.DepartmentRepository;
+import services.department.repository.OrganitzationRepository;
+
+/**
+Created by rajeevkumarsingh on 27/06/17.
+ */
+@RestController
+@RequestMapping("/api")
+public class NoteController {
+
+	
+	@Autowired DepartmentRepository departmentService;
+	
+	@Autowired
+	OrganitzationRepository service;
+	
+	@PostMapping("/createorganization")
+	public Organization create(@RequestBody Organization department) {
+		return service.add(department);
+	}
+	
+	
+	@PostMapping("/create")
+	public Department create(@RequestBody Department department) { return
+	departmentService.save(department); }
+	
+	 
+}

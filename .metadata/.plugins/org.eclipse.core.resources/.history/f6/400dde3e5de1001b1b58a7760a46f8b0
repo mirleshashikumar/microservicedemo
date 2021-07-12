@@ -1,0 +1,66 @@
+package services.department.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import services.department.model.CoreException;
+import services.department.model.Employee;
+import services.department.model.Organization;
+import services.department.repository.EmployeeRepository;
+import services.department.repository.OrganitzationRepository;
+
+@Service("organizationService")
+public class OrganizationService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationService.class);
+
+	@Autowired
+	OrganitzationRepository repository;
+		
+	
+	public Organization add(Organization employee) {
+		LOGGER.info("Employee add: {}", employee);
+		return repository.save(employee);
+	}
+	
+	public Organization findById(Long id) {
+		Organization employee=new Organization();
+		LOGGER.info("Employee find: id={}", id);
+		 Optional<Organization> employeeResponse = repository.findById(id);
+		 if(employeeResponse.isPresent()) {
+			 employee=employeeResponse.get();
+		 }
+		 return employee;
+	}
+	
+	public List<Organization> findAll() {
+		LOGGER.info("Employee Department");
+		return repository.findAll();
+	}
+	
+	public void deleteById(Long id) throws CoreException {
+		 Optional<Organization> employeeResponse = repository.findById(id);
+		 if(employeeResponse.isPresent()) {
+			 repository.deleteById(id);
+		 }else {
+			 String message="Resource not found";
+		 throw new CoreException(message) ;
+		 }
+		
+	}	
+	public void updateById(Organization employee,Long id) throws CoreException {
+		 Optional<Organization> employeeResponse = repository.findById(id);
+		 if(employeeResponse.isPresent()) {
+			 repository.save(employee);
+		 }else {
+			 String message="Resource not found";
+		 throw new CoreException(message) ;
+		 }
+		
+	}	
+}

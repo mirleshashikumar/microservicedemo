@@ -1,0 +1,9 @@
+department.url=http://localhost:8082/departmentservice/find/
+organization.url=http://localhost:8081/organizationservice/find/
+server.port=8083
+spring.application.name=employee-service
+spring.datasource=null
+spring.password=root
+spring.url=jdbc:mysql://localhost:3306/organization_db
+spring.username=root
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver

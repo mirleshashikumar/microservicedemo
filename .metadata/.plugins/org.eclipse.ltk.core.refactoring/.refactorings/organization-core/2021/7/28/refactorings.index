@@ -1,0 +1,30 @@
+1625897703673	Rename resource 'bootstrap.yml'
+1625897755429	Rename package 'pl.piomin.services.department'
+1625897777930	Rename package 'services.department'
+1625900535431	Rename package 'pl.piomin.services.department.client'
+1625900542303	Rename package 'pl.piomin.services.department.controller'
+1625900550179	Rename package 'pl.piomin.services.department.model'
+1625900560983	Rename package 'pl.piomin.services.department.repository'
+1625901422099	Copy compilation unit
+1625902056985	Copy compilation unit
+1625902135735	Copy compilation unit
+1625904273750	Delete element
+1625904328893	Copy package
+1625904342330	Rename type 'DepartmentRepository'
+1625904794742	Rename field 'repository'
+1625904950701	Copy compilation unit
+1625905221559	Delete element
+1625906615754	Copy compilation unit
+1625906638333	Rename type 'OrganitationRepository'
+1625906670713	Delete element
+1625906678343	Delete element
+1625909096383	Rename resource 'application.yml'
+1625909108178	Rename resource 'application.porperties'
+1625925263743	Delete element
+1625925585045	Copy compilation unit
+1625926655654	Copy packages
+1625930324837	Copy compilation unit
+1625930342311	Copy package
+1625930357754	Copy compilation unit
+1625930373509	Copy package
+1625930399173	Copy package

@@ -1,0 +1,14 @@
+package com.example.department.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import services.department.model.Department;
+import services.department.model.Employee;
+import services.department.repository.IBaseJpaRepository;
+
+@Repository
+public interface IDepartmentRepository extends IBaseJpaRepository<Long,Department> {
+
+	
+}

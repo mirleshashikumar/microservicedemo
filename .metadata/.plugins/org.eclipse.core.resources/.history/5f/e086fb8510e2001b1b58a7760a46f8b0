@@ -1,0 +1,40 @@
+package com.example.department.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.department.model.Department;
+import com.example.department.service.DepartmentService;
+import com.example.department.service.EmployeeService;
+
+@RestController
+@RequestMapping("/employeeService")
+public class EmployeeController {
+
+	@Autowired
+	EmployeeService employeeService;
+	
+	@PostMapping("/create")
+	public Department create(@RequestBody Department department) {
+		return employeeService.add(department);
+	}
+	
+	@GetMapping("/{id}")
+	public Department findById(@PathVariable("id") Long id) {
+		return employeeService.findById(id);
+	}
+	
+	@GetMapping("/findall")
+	public List<Department> findAll() {
+		return employeeService.findAll();
+  	}
+
+	
+}

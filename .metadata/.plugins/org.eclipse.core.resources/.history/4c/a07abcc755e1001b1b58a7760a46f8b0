@@ -1,0 +1,9 @@
+package services.department.service;
+
+import org.springframework.stereotype.Repository;
+
+@Service("departmentService")
+public class DepartmentService {
+
+	
+}

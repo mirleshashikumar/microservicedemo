@@ -1,0 +1,54 @@
+package com.example.department.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ORGANIZATION")
+public class Organization {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String name;
+	private String address;
+	
+	@OneToMany(targetEntity=Department.class,
+			mappedBy="organization",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Department> department = new ArrayList<>();
+
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public List<Department> getDepartment() {
+		return department;
+	}
+	public void setDepartment(List<Department> department) {
+		this.department = department;
+	}
+	
+	
+}

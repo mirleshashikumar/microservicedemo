@@ -1,0 +1,6 @@
+spring.datasource.url = jdbc:mysql://localhost:3306/organization_db
+spring.datasource.username = root
+spring.datasource.password = root
+server.port=8083
+department.url=http://localhost:8082/departmentservice/find/
+organization.url=http://localhost:8081/organizationservice/find/

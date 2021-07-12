@@ -1,0 +1,101 @@
+package com.example.department.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.employee.repository.EmployeeRepository;
+
+import services.employee.model.CoreException;
+import services.employee.model.Employee;
+import services.employee.model.EmployeeResponse;
+
+@Service("employeeService")
+public class EmployeeService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeService.class);
+
+	@Autowired
+	EmployeeRepository repository;
+	
+	@Value("{department.url}")
+	String departmentUrl;
+	
+	@Value("{organization.url}")
+	String organizationUrl;
+	
+		
+	
+	public Employee add(Employee employee) {
+		LOGGER.info("Employee add: {}", employee);
+		return repository.save(employee);
+	}
+	
+	public Employee findById(Long id) {
+		Employee employee=new Employee();
+		LOGGER.info("Employee find: id={}", id);
+		 Optional<Employee> employeeResponse = repository.findById(id);
+		 if(employeeResponse.isPresent()) {
+			 employee=employeeResponse.get();
+		 }
+		 return employee;
+	}
+	
+	public List<EmployeeResponse> findAll() {
+		List<EmployeeResponse>employeeResponses=new ArrayList<>();
+		LOGGER.info("Employee Department");
+		List<Employee> employees=repository.findAll();
+		for(Employee employee:employees) {
+			EmployeeResponse employeeResponse=getDepartmentDetails(employee.getId());
+			employeeResponse.setEmployeeName(employee.getEmployeeName());
+			employeeResponse.setId(employee.getId());
+			employeeResponses.add(employeeResponse);
+		}
+		return employeeResponses;
+	}
+	
+	public EmployeeResponse getDepartmentDetails(Long employeeId) {
+		RestTemplate restTemplate = new RestTemplate();
+	
+		ResponseEntity<EmployeeResponse> departmentResponse  = restTemplate.getForEntity(departmentUrl + employeeId, EmployeeResponse.class);
+		EmployeeResponse employeeResponse=	departmentResponse.getBody();
+			ResponseEntity<EmployeeResponse> organizationResponse = restTemplate.getForEntity(organizationUrl + employeeResponse.getId(), EmployeeResponse.class);
+			
+	
+		return organizationResponse.getBody();
+		
+		
+	}
+	
+
+	
+	public void deleteById(Long id) throws CoreException {
+		 Optional<Employee> employeeResponse = repository.findById(id);
+		 if(employeeResponse.isPresent()) {
+			 repository.deleteById(id);
+		 }else {
+			 String message="Resource not found";
+		 throw new CoreException(message) ;
+		 }
+		
+	}	
+	
+	public void updateById(Employee employee,Long id) throws CoreException {
+		 Optional<Employee> employeeResponse = repository.findById(id);
+		 if(employeeResponse.isPresent()) {
+			 repository.save(employee);
+		 }else {
+			 String message="Resource not found";
+		 throw new CoreException(message) ;
+		 }
+		
+	}	
+}

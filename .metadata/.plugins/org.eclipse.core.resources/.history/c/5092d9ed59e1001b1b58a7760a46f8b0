@@ -1,0 +1,81 @@
+package com.unilog.cimmesb.core.exception;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+
+import com.unilog.cimmesb.core.model.CoreError;
+
+public class CoreException extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4951959379209936064L;
+
+	private final List<CoreError> errors=new ArrayList<>();
+	
+	public CoreException() {
+		this("Exception occurred");
+	}
+	public CoreException(String message) {
+		super(message);
+	}
+	public CoreException(String msg,Throwable throwable) {
+		super(msg,throwable);
+	}
+	public CoreException(final BindingResult bindingResult) {
+		this.errors.addAll(bindingResult.getFieldErrors().stream()
+				.map(this::convertToCoreError)
+				.collect(Collectors.toList()));
+	}
+	
+	public CoreException(CoreError... coreErrors) {
+		try {
+			errors.addAll(Arrays.asList(coreErrors));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public CoreException(Collection<CoreError> coreErrors) {
+		errors.addAll(coreErrors);
+	}
+	
+    protected CoreError convertToCoreError(FieldError fe) {
+        return CoreError.builder()
+        		.errorMessage(fe.getDefaultMessage())
+        		.errorCode(fe.getCode())
+        		.fieldName(fe.getField())
+        		.rejectedValue(fe.getRejectedValue()!=null?fe.getRejectedValue().toString():null)
+        		.exception(this)
+        		.build();
+    }
+
+	public List<CoreError> getCoreErrors() {
+		return this.errors;
+	}
+	
+	public boolean hasErrors() {
+		return (!this.errors.isEmpty());
+	}
+	
+	@Override
+	public String getMessage() {
+		if(!this.errors.isEmpty()) {
+			StringBuilder strBuilder = new StringBuilder();
+			for(CoreError coreError:this.errors) {
+				strBuilder.append(coreError.getErrorMessage());
+				strBuilder.append(System.lineSeparator());
+			}
+			return strBuilder.toString();
+		} else {
+			return super.getMessage();
+		}
+	}
+	
+}

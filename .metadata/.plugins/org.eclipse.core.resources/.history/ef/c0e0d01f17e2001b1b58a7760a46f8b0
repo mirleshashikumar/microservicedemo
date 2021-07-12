@@ -1,0 +1,39 @@
+package services.department.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Table(name = "DEPARTMENT")
+public class Department {
+
+	private Long id;
+	private Long organizationId;
+	private String name;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Long getOrganizationId() {
+		return organizationId;
+	}
+	public void setOrganizationId(Long organizationId) {
+		this.organizationId = organizationId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+}

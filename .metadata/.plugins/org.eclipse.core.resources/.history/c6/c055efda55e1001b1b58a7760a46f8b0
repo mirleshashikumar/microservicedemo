@@ -1,0 +1,10 @@
+package services.department.service;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+@Service("departmentService")
+public class DepartmentService {
+
+	
+}

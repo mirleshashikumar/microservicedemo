@@ -1,0 +1,15 @@
+department:
+    url: http://localhost:8082/departmentservice/find/
+organization:
+    url: http://localhost:8081/organizationservice/find/
+server:
+    port: 8083
+spring:
+    datasource:
+        password: root
+        url: jdbc:mysql://localhost:3306/organization_db
+        username: root
+spring:
+	application:
+	name:EMPLOYEESERVICE
+			
